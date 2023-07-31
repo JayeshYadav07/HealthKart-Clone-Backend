@@ -30,7 +30,7 @@ productRouter.get("/get/:count", async (req, res) => {
 productRouter.get("/getLowToHigh/:count", async (req, res) => {
     try {
         let data = await ProductModel.find()
-            .sort({ price: 1 })
+            .sort({ discountedPrice: 1 })
             .limit(req.params.count);
         res.send(data);
     } catch (error) {
@@ -40,7 +40,7 @@ productRouter.get("/getLowToHigh/:count", async (req, res) => {
 productRouter.get("/getHighToLow/:count", async (req, res) => {
     try {
         let data = await ProductModel.find()
-            .sort({ price: -1 })
+            .sort({ discountedPrice: -1 })
             .limit(req.params.count);
         res.send(data);
     } catch (error) {
